@@ -1,31 +1,46 @@
-from telegraph import upload_file
+import os
 from pyrogram import filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from telegraph import upload_file
 from SACHINxSANATANIxMUSIC import app
-from pyrogram.types import InputMediaPhoto
 
 
-@app.on_message(filters.command(["tgm" , "telegraph"]))
-def ul(_, message):
-    reply = message.reply_to_message
-    if reply.media:
-        i = message.reply("𝐌𝙰𝙺𝙴 𝐀 𝐋𝙸𝙽𝙺...")
-        path = reply.download()
-        fk = upload_file(path)
-        for x in fk:
-            url = "https://telegra.ph" + x
+@app.on_message(filters.command(["tgm", "tgt", "telegraph", "tl"]))
+async def get_link_group(client, message):
+    if not message.reply_to_message:
+        return await message.reply_text(
+            "ᴘʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ ᴛᴏ ᴜᴘʟᴏᴀᴅ ᴏɴ ᴛᴇʟᴇɢʀᴀᴘʜ"
+        )
+    try:
+        text = await message.reply("❍ ᴘʀᴏᴄᴇssɪɴɢ...")
 
-        i.edit(f'Yᴏᴜʀ ʟɪɴᴋ sᴜᴄᴄᴇssғᴜʟ Gᴇɴ {url}')
+        async def progress(current, total):
+            await text.edit_text(f"❍ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ... {current * 100 / total:.1f}%")
 
-########____________________________________________________________######
-
-@app.on_message(filters.command(["graph" , "grf"]))
-def ul(_, message):
-    reply = message.reply_to_message
-    if reply.media:
-        i = message.reply("𝐌𝙰𝙺𝙴 𝐀 𝐋𝙸𝙽𝙺...")
-        path = reply.download()
-        fk = upload_file(path)
-        for x in fk:
-            url = "https://graph.org" + x
-
-        i.edit(f'Yᴏᴜʀ ʟɪɴᴋ sᴜᴄᴄᴇssғᴜʟ Gᴇɴ {url}')
+        try:
+            location = f"cache"
+            local_path = await message.reply_to_message.download(
+                location, progress=progress
+            )
+            await text.edit_text("❍ ᴜᴘʟᴏᴀᴅɪɴɢ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴘʜ...")
+            upload_path = upload_file(local_path)
+            await text.edit_text(
+                f"❖ | [ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ](https://telegra.ph{upload_path[0]}) ❖",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "• ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ •",
+                                url=f"https://telegra.ph{upload_path[0]}",
+                            )
+                        ]
+                    ]
+                ),
+            )
+            os.remove(local_path)
+        except Exception as e:
+            await text.edit_text(f"❍ |ғɪʟᴇ ᴜᴘʟᴏᴀᴅ ғᴀɪʟᴇᴅ \n\n<i>ʀᴇᴀsᴏɴ: {e}</i>")
+            os.remove(local_path)
+            return
+    except Exception:
+        pass
