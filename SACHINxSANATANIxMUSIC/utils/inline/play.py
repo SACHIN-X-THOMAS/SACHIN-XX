@@ -34,25 +34,25 @@ def stream_markup_timer(_, chat_id, played, dur):
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
     if 0 < umm <= 10:
-        bar = "💕✄·─·─·─·─·─·─·─·─·─💗"
+        bar = "◉—————————"
     elif 10 < umm < 20:
-        bar = "💕-ˋˏ✄·─·─·─·─·─·─·─·─💗"
+        bar = "—◉————————"
     elif 20 <= umm < 30:
-        bar = "💕-ˋˏ-ˋˏ✄·─·─·─·─·─·─·─💗"
+        bar = "——◉———————"
     elif 30 <= umm < 40:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─·─·─💗"
+        bar = "———◉——————"
     elif 40 <= umm < 50:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─·─💗"
+        bar = "————◉—————"
     elif 50 <= umm < 60:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─·─💗"
+        bar = "—————◉————"
     elif 60 <= umm < 70:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─·─💗"
+        bar = "——————◉———"
     elif 70 <= umm < 80:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─·─💗"
+        bar = "———————◉——"
     elif 80 <= umm < 95:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·─💗"
+        bar = "————————◉—"
     else:
-        bar = "💕-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ-ˋˏ✄·💘"
+        bar = "—————————◉"
     buttons = [
                 [
             InlineKeyboardButton(
@@ -60,9 +60,12 @@ def stream_markup_timer(_, chat_id, played, dur):
                 callback_data="GetTimer",
             )
         ],
+		[
+         InlineKeyboardButton(text=_["S_B_3"], url=f"https://t.me/{app.username}?startgroup=true",)
+        ],
         [
-         InlineKeyboardButton(text="👻 ‌🇴𝐖𝐍𝐄𝐑 💘", user_id=config.OWNER_ID),
-         InlineKeyboardButton(text="💓 ‌🇭‌𝐄𝐋𝐏 💗", url=f"{SUPPORT_CHAT}",),
+         InlineKeyboardButton(text="• ᴏᴡɴᴇʀ •", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="• ɢʀᴏᴜᴘ •", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
@@ -72,8 +75,8 @@ def stream_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, chat_id):
     buttons = [
         [
-         InlineKeyboardButton(text="👻 ‌🇴𝐖𝐍𝐄𝐑 💘", user_id=config.OWNER_ID),
-         InlineKeyboardButton(text="💓 ‌🇭‌𝐄𝐋𝐏 💗", url=f"{SUPPORT_CHAT}",),
+         InlineKeyboardButton(text="• ᴏᴡɴᴇʀ •", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="• ɢʀᴏᴜᴘ •", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
