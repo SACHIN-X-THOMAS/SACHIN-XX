@@ -35,7 +35,7 @@ async def make_carbon(code):
 @app.on_message(filters.command("ping", prefixes=["/"]) & ~BANNED_USERS)
 @language
 async def ping_com(client, message: Message, _):
-    PING_IMG_URL = "https://telegra.ph/file/7bb907999ea7156227283.jpg"
+    PING_IMG_URL = "https://telegra.ph/file/ff859741222c7486f79c0.jpg"
     captionss = "**ᴘɪɴɢɪɴɢ ᴏᴜʀ sᴇʀᴠᴇʀ ᴡᴀɪᴛ.**"
     response = await message.reply_photo(PING_IMG_URL, caption=(captionss))
     await asyncio.sleep(1)
@@ -58,7 +58,7 @@ async def ping_com(client, message: Message, _):
     resp = (datetime.now() - start).microseconds / 1000
     text =  _["ping_2"].format(resp, app.name, UP, RAM, CPU, DISK, pytgping)
     carbon = await make_carbon(text)
-    captions = "**ㅤ  ➲ 💘𝙲𝚄𝚃𝙴 𝙲𝙿𝙻💌\nㅤ  ➲ 💗𝙽𝙴𝙷𝚄 ‌🇽 𝚃𝙷𝙾𝙼𝙰𝚂💓 **"
+    captions = "**ㅤ  ➲ ᴘɪɴɢ...ᴘᴏɴɢ...ᴘɪɴɢ\nㅤ  ➲ ᴅɪɴɢ...ᴅᴏɴɢ...ᴅɪɴɢ**"
     await message.reply_photo((carbon), caption=captions,
     reply_markup=InlineKeyboardMarkup(
             [
@@ -71,15 +71,15 @@ async def ping_com(client, message: Message, _):
         ],
         [
             InlineKeyboardButton(
-                text="🍃 ‌🇬𝐑𝐏 🍃", url=f"https://t.me/Bestie_chatting_Group",
+                text="• ɢʀᴏᴜᴘ •", url=f"https://t.me/Il_4ST_FIGHTER_lI",
             ),
             InlineKeyboardButton(
-                text="🍷 ‌🇲𝐎𝐑𝐄 🍷", url=f"https://t.me/ll4st_opII",
+                text="• ᴍᴏʀᴇ •", url=f"https://t.me/ALL_SANATANI_BOT",
             )
         ],
         [
             InlineKeyboardButton(
-                text="❄️ ‌🇭𝐄𝐋𝐏 ❄️", url=f"https://t.me/{app.username}?start=help"
+                text="• ʜᴇʟᴘ •", url=f"https://t.me/{app.username}?start=help"
             )
         ],
     ]
