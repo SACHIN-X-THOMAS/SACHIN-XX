@@ -1,35 +1,42 @@
 from ... import *
 from pyrogram import *
 from pyrogram.types import *
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+SACHIN = [
+    [
+        InlineKeyboardButton(text="✙ ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ ✙", url=f"https://t.me/HIMANSHI_MUSIC_BOT?startgroup=true"),
+    ],
+]
 
 @app.on_message(filters.command(["gen", "ccgen"], [".", "!", "/"]))
 async def gen_cc(client, message):
     if len(message.command) < 2:
         return await message.reply_text(
-            "**Please Give Me a Bin To\nGenerate Cc ...**"
+            "❍ ᴘʟᴇᴀsᴇ ɢɪᴠᴇ ᴍᴇ ᴀ ʙɪɴ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴄᴄ ..."
         )
     try:
         await message.delete()
     except:
         pass
-    aux = await message.reply_text("**Generating ...**")
+    aux = await message.reply_text("🤍")
     bin = message.text.split(None, 1)[1]
     if len(bin) < 6:
-        return await aux.edit("**❌ Wrong Bin❗...**")
+        return await aux.edit("❍ ᴡʀᴏɴɢ ʙɪɴ......!!")
     try:
         resp = await api.ccgen(bin, 10)
         cards = resp.liveCC
         await aux.edit(f"""
-**💠 Some Live Generated CC:**
+**┬── ⋅ ⋅ ───── ᯽ ───── ⋅ ⋅ ──┬**
+**     ❖ sᴏᴍᴇ ʟɪᴠᴇ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴄᴄ ❖**
+**┴── ⋅ ⋅ ───── ᯽ ───── ⋅ ⋅ ──┴**
+
 `{cards[0]}`\n`{cards[1]}`\n`{cards[2]}`
 `{cards[3]}`\n`{cards[4]}`\n`{cards[5]}`
 `{cards[6]}`\n`{cards[7]}`\n`{cards[8]}`
 `{cards[9]}`
-**💳 Bin:** `{resp.results[0].bin}`
-**⏳ Time Took:** `{resp.took}`\n\n"""
+
+**❖ ᴄᴄ ɢᴇɴ ʙʏ ➥ [ʜᷟ ɪᷣ ᴍᷤ ᴧ η ɪ](https://t.me/HIMANSHI_MUSIC_BOT)**""" , reply_markup=InlineKeyboardMarkup(SACHIN),
         )
     except Exception as e:
-        return await aux.edit(f"**Error:** `{e}`")
-
-  
+        return await aux.edit(f"❍ ᴇʀʀᴏʀ ➠ {e}")
