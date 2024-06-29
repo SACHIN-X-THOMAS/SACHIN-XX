@@ -41,6 +41,7 @@ yt-dlp==2023.10.13
 youtube-search
 youtube-search-python
 gtts
+git+https://github.com/yt-dlp/yt-dlp
 git+https://github.com/AsmSafone/SafoneAPI
 lexica-api==1.5.7
 httpx==0.25.2
