@@ -51,7 +51,7 @@
                                                                                                                           <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">     
                                                                                                                                
 <p align="center">
-<a href="https://telegram.me/SHREE_SANATANI"><img src="https://img.shields.io/badge/-☆ SACHIN%20 ☆-blue.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://telegram.me/itzAsuraa"><img src="https://img.shields.io/badge/-☆ SACHIN%20 ☆-blue.svg?style=for-the-badge&logo=Telegram"></a>
 </p>
 <h3 align="center">
 
